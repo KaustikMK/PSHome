@@ -1,0 +1,21 @@
+name: Build
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: orbisdev/orbisdev:latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compile
+        run: orbis-clang main.c -o fake_shell.elf
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: fake_shell
+          path: fake_shell.elf
