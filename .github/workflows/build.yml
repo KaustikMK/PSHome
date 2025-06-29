@@ -15,7 +15,7 @@ jobs:
       - name: Compile
         run: orbis-clang main.c -o fake_shell.elf
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: fake_shell
           path: fake_shell.elf
